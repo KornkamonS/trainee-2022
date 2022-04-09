@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.CodeAnalysis;
 using TodoApi.Models;
 
@@ -12,7 +12,7 @@ namespace TodoApi.Models
         }
 
         public DbSet<TodoItem> TodoItems { get; set; } = null!;
-
+        //TODO: use plural words for collection 
         public DbSet<TodoApi.Models.Step> Step { get; set; }
 
         public virtual DbSet<User> User { get; set; }

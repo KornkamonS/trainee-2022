@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using TodoApi.Models;
 using TodoApi.Services.Interfaces;
@@ -9,13 +9,14 @@ namespace TodoApi.Services
     {
         private readonly TodoContext _context;
 
-        public TodoService (TodoContext context)
+        public TodoService(TodoContext context)
         {
             _context = context;
         }
 
         public async Task<TodoItem> CreateItem(TodoItem newItem)
         {
+            //TODO: you can add newItem without create new instance  
             var item = new TodoItem
             {
                 Name = newItem.Name,
@@ -61,21 +62,22 @@ namespace TodoApi.Services
             {
                 Id = id,
                 Name = item.Name,
-                StartDate = item.StartDate, 
-                EndDate=item.EndDate,
-                IsComplete=item.IsComplete,
+                StartDate = item.StartDate,
+                EndDate = item.EndDate,
+                IsComplete = item.IsComplete,
             };
         }
 
         public async Task<TodoItem> GetTodoItem(int id)
         {
             var todoItem = await _context.TodoItems.FindAsync(id);
-            if(todoItem == null)
+            if (todoItem == null)
             {
                 return null;
             }
-
-            return new TodoItem() {
+            //TODO: you can return todoItem without create new instance  
+            return new TodoItem()
+            {
                 Id = id,
                 Name = todoItem.Name,
                 StartDate = todoItem.StartDate,
@@ -90,7 +92,7 @@ namespace TodoApi.Services
             //IEnumerable<TodoItem> itemQuery = from 
             return list;
         }
-
+        //TODO: maybe change newItem to updateItem
         public async Task<TodoItem> UpdateItem(int id, TodoItem newItem)
         {
             var item = _context.TodoItems.First(i => i.Id == id);

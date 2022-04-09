@@ -80,7 +80,7 @@ namespace TodoApi.Controllers
         // POST: api/TodoItems
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<TodoItem>> PostTodoItem([FromBody]TodoItem todoItem)
+        public async Task<ActionResult<TodoItem>> PostTodoItem([FromBody] TodoItem todoItem)
         {
             //_context.TodoItems.Add(todoItem);
             //await _context.SaveChangesAsync();
@@ -88,6 +88,7 @@ namespace TodoApi.Controllers
             //return CreatedAtAction("GetTodoItem", new { id = todoItem.Id }, todoItem);
             //return CreatedAtAction(nameof(GetTodoItem), new { id = todoItem.Id }, todoItem);
             var newtodo = await _todoService.CreateItem(todoItem);
+            //TODO: I think this case can not null
             if (newtodo == null) return NotFound();
             return newtodo;
         }
