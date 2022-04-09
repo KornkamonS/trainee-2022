@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -43,6 +43,7 @@ namespace todoapp_api.Controllers
                     SubItems = model.SubItems
                 };
                 var result = await _taskService.InsertTask(todoItem);
+                //TODO: this line will not use because the function always return true or throw the exception
                 if (!result)
                     return StatusCode(StatusCodes.Status400BadRequest, new Response { Success = false, Message = "Failed to insert task to the database" });
                 return StatusCode(StatusCodes.Status200OK, new Response { Success = true, Message = "Successfully insert task to the database" });
@@ -53,6 +54,7 @@ namespace todoapp_api.Controllers
             }
         }
 
+        // TODO: avoid to use verb in route
         [HttpGet]
         [Route("get/{amount}")]
         public async Task<IActionResult> GetByAmount(int amount)

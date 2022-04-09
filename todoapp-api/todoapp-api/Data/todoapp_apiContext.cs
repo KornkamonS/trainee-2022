@@ -10,13 +10,14 @@ using todoapp_api.Models;
 
 namespace todoapp_api.Data
 {
+    //TODO: use Pascal case for class name
     public class todoapp_apiContext : IdentityDbContext<User,IdentityRole<int>,int>
     {
         public todoapp_apiContext (DbContextOptions<todoapp_apiContext> options)
             : base(options)
         {
         }
-
+        //TODO: Change to plural words
         public DbSet<todoapp_api.Models.User> User { get; set; }
 
         public DbSet<todoapp_api.Models.Item> Item { get; set; }

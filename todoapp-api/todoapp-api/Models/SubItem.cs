@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+//TODO: use Pascal Case for Namespace name	
 namespace todoapp_api.Models
 {
     public class SubItem
